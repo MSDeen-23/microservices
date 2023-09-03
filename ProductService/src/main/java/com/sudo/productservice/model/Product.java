@@ -4,20 +4,27 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
-@Document(value="product")
+@Entity
+@Table(name="PRODUCT")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Data
 public class Product {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @Column(name = "NAME")
     private String name;
+
+    @Column(name = "DESCRIPTION")
     private String description;
+
+    @Column(name = "PRICE")
     private BigDecimal price;
 }

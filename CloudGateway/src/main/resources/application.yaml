@@ -3,10 +3,16 @@ server:
 spring:
   application:
     name: API-GATEWAY
+  main:
+    allow-bean-definition-overriding: true
   config:
     import: configserver:http://localhost:9296
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
       routes:
         - id : ORDER-SERVICE
           uri: lb://ORDER-SERVICE
@@ -19,8 +25,8 @@ spring:
                 fallbackuri: forward:/orderServiceFallBack
             - name: RequestRateLimiter
               args:
-                redis-rate-limiter.replenishRate: 1
-                redis-rate-limiter.burstCapacity: 1
+                redis-rate-limiter.replenishRate: 5
+                redis-rate-limiter.burstCapacity: 5
         - id: PAYMENT-SERVICE
           uri: lb://PAYMENT-SERVICE
           predicates:
@@ -54,3 +60,7 @@ okta:
     client-id: 0oaawbyxrbSiB5Qgt5d7
     client-secret: YAgH5MyAGE0vn8hWkBnghIl9UthL7L5oPoJ44x99cudPcdr1EAkHUQxHWK1xar81
     scopes: openid, profile, email, offline_access
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty: DEBUG

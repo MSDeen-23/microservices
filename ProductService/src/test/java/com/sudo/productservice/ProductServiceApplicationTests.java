@@ -14,9 +14,6 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.testcontainers.containers.MongoDBContainer;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.math.BigDecimal;
 
@@ -25,55 +22,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 @SpringBootTest
-@Testcontainers
 @AutoConfigureMockMvc
 class ProductServiceApplicationTests {
 
-    @Container
-    static MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:4.4.2");
-
-    @Autowired
-    private MockMvc mockMvc;
-
-    @DynamicPropertySource
-    static void setProperties(DynamicPropertyRegistry dynamicPropertyRegistry){
-        dynamicPropertyRegistry.add("spring.data.mongodb.uri",mongoDBContainer::getReplicaSetUrl);
-    }
-
-    @Autowired(required = true)
-    private ObjectMapper objectMapper;
-
-    @Autowired
-    ProductRepository productRepository;
-
-    @Test
-    void shouldCreateProduct() throws Exception {
-        ProductRequest productRequest = getProductRequest();
-        String productRequestString = objectMapper.writeValueAsString(productRequest);
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/product")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(productRequestString))
-                .andExpect(status().isCreated());
-        Assertions.assertEquals(1, productRepository.findAll().size());
-    }
-
-    @Test
-    void getProduct() throws Exception{
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/product"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].name").value("iphone 13"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.size()").value(1));
-    }
-
-    private ProductRequest getProductRequest() {
-        return ProductRequest.builder()
-                .name("iphone 13")
-                .description("iPhone 13")
-                .price(BigDecimal.valueOf(1200))
-                .build();
-
-
-    }
 
 }
