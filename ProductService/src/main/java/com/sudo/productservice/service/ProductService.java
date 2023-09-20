@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -41,7 +42,7 @@ public class ProductService {
 
     public List<ProductResponse> getAllProducts() {
         List<Product> products = productRepository.findAll();
-        return products.stream().map(this::mapToProductResponse).toList();
+        return products.stream().map(this::mapToProductResponse).collect(Collectors.toList());
     }
 
     private ProductResponse mapToProductResponse(Product product){

@@ -24,7 +24,7 @@ import java.util.List;
 public class CloudGatewayApplication {
 
 
-    private final String issuerUri="https://dev-27290393.okta.com/oauth2/default";
+    private final String issuerUri="https://dev-27290393.oktacom/oauth2/default";
 
     public static void main(String[] args) {
         SpringApplication.run(CloudGatewayApplication.class, args);
