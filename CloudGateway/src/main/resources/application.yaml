@@ -18,7 +18,7 @@ spring:
           lower-case-service-id: true
       routes:
         - id : ORDER-SERVICE
-          uri: lb://ORDER-SERVICE
+          uri: http://order-service-svc
           predicates:
             - Path=/api/v1/order/**
           filters:
@@ -31,7 +31,7 @@ spring:
                 redis-rate-limiter.replenishRate: 5
                 redis-rate-limiter.burstCapacity: 5
         - id: PAYMENT-SERVICE
-          uri: lb://PAYMENT-SERVICE
+          uri: http://payment-service-svc
           predicates:
             - Path=/api/v1/payment/**
           filters:
@@ -44,7 +44,7 @@ spring:
                 redis-rate-limiter.replenishRate: 1
                 redis-rate-limiter.burstCapacity: 1
         - id: PRODUCT-SERVICE
-          uri: lb://PRODUCT-SERVICE
+          uri: http://product-service-svc
           predicates:
             - Path=/api/v1/product/**
           filters:

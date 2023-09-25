@@ -11,19 +11,24 @@ import com.hellosudo.orderservice.model.OrderRequest;
 import com.hellosudo.orderservice.model.PaymentMode;
 import com.hellosudo.orderservice.model.ProductResponse;
 import com.hellosudo.orderservice.repository.OrderRepository;
+import org.checkerframework.common.value.qual.BottomVal;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIfSystemProperties;
+import org.junit.platform.commons.util.ReflectionUtils;
 import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.event.annotation.BeforeTestMethod;
+import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.Instant;
@@ -52,6 +57,18 @@ public class OrderServiceImplTest {
     @InjectMocks
     OrderService orderService = new OrderServiceImpl();
 
+    @Value("${microservices.product}")
+    private String productServiceUrl;
+
+    @Value("${microservices.product}")
+    private String paymentServiceUrl;
+
+    @BeforeEach
+    public void setup(){
+        ReflectionTestUtils.setField(orderService,"productServiceUrl",productServiceUrl);
+        ReflectionTestUtils.setField(orderService,"paymentServiceUrl",paymentServiceUrl);
+    }
+
     @DisplayName("Get order - Success scenario")
     @Test
     void test_When_Order_Success(){
@@ -62,12 +79,12 @@ public class OrderServiceImplTest {
 
         // product response mock
         ProductResponse productResponse = getMockProductResponse();
-        when(restTemplate.getForObject("http://PRODUCT-SERVICE/api/v1/product/"+order.getProductId(), ProductResponse.class))
+        when(restTemplate.getForObject(productServiceUrl+order.getProductId(), ProductResponse.class))
                 .thenReturn(productResponse);
 
         // payment response mock
         PaymentResponse paymentResponse = getMockPaymentResponse();
-        when(restTemplate.getForObject("http://PAYMENT-SERVICE/api/v1/payment/order/"+order.getId(), PaymentResponse.class))
+        when(restTemplate.getForObject(paymentServiceUrl+"order/"+order.getId(), PaymentResponse.class))
                 .thenReturn(paymentResponse);
 
         // Actual
@@ -75,8 +92,8 @@ public class OrderServiceImplTest {
 
         // Verification
         verify(orderRepository,times(1)).findById(anyLong());
-        verify(restTemplate, times(1)).getForObject("http://PRODUCT-SERVICE/api/v1/product/"+order.getProductId(), ProductResponse.class);
-        verify(restTemplate, times(1)).getForObject("http://PAYMENT-SERVICE/api/v1/payment/order/"+order.getId(), PaymentResponse.class);
+        verify(restTemplate, times(1)).getForObject(productServiceUrl+order.getProductId(), ProductResponse.class);
+        verify(restTemplate, times(1)).getForObject(paymentServiceUrl+"order/"+order.getId(), PaymentResponse.class);
 
         // Assert
         assertNotNull(orderResponse);

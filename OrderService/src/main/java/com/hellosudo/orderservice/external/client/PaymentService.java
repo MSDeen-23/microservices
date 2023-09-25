@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @CircuitBreaker(name="external",fallbackMethod = "fallback")
-@FeignClient(name = "PAYMENT-SERVICE/api/v1/payment")
+@FeignClient(name = "payment",url = "${microservices.payment}")
 public interface PaymentService {
     @PostMapping
     public ResponseEntity<Long> doPayment(@RequestBody PaymentRequest paymentRequest);

@@ -87,7 +87,7 @@ metadata:
 data:
   init.sql: |
     CREATE DATABASE IF NOT EXISTS orderdb;
-    CREATE DATABASE IF NOT EXISTS paymentb;
+    CREATE DATABASE IF NOT EXISTS paymentdb;
     CREATE DATABASE IF NOT EXISTS productdb;
 
 ---

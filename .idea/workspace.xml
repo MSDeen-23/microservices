@@ -4,26 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3afb861-2afb-4116-95aa-b9f7cff89b79" name="Default Changelist" comment="docker files for all service-registry, cloudgateway and config-server">
-      <change afterPath="$PROJECT_DIR$/K8S/cloud-gateway-deployment.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/K8S/deploy.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/K8S/service-registry-statefulset.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/K8S/svc.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaymentService/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildAndDeploy.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+    <list default="true" id="b3afb861-2afb-4116-95aa-b9f7cff89b79" name="Default Changelist" comment="kubernetes configurations">
+      <change afterPath="$PROJECT_DIR$/K8S-scrape/service-registry-statefulset.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CloudGateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CloudGateway/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CloudGateway/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/CloudGateway/src/main/resources/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConfigServer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ConfigServer/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConfigServer/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ConfigServer/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/K8S/cloud-gateway-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/K8S/cloud-gateway-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/K8S/config-maps.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/K8S/config-maps.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/K8S/config-server-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/K8S/config-server-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/K8S/deploy.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/K8S-scrape/deploy.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/K8S/mysql-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/K8S/mysql-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/K8S/order-service-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/K8S/order-service-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/K8S/payment-service-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/K8S/payment-service-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/K8S/product-service-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/K8S/product-service-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/K8S/service-registry-statefulset.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/K8S/svc.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/K8S-scrape/svc.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OrderService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/hellosudo/orderservice/OrderServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/hellosudo/orderservice/OrderServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/hellosudo/orderservice/external/client/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/hellosudo/orderservice/external/client/PaymentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/hellosudo/orderservice/external/client/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/hellosudo/orderservice/external/client/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/hellosudo/orderservice/service/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/hellosudo/orderservice/service/OrderServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OrderService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/test/java/com/hellosudo/orderservice/OrderServiceConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/test/java/com/hellosudo/orderservice/OrderServiceConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/test/java/com/hellosudo/orderservice/TestServiceInstanceListSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/test/java/com/hellosudo/orderservice/TestServiceInstanceListSupplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/test/java/com/hellosudo/orderservice/service/OrderServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/test/java/com/hellosudo/orderservice/service/OrderServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/test/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/test/resources/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PaymentService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PaymentService/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PaymentService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/PaymentService/src/main/resources/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProductService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProductService/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProductService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ProductService/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-registry/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service-registry/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-registry/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/service-registry/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/product/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +107,9 @@
       <recent name="$PROJECT_DIR$/CloudGateway" />
       <recent name="$PROJECT_DIR$/ConfigServer" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/K8S-scrape" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.sudo.productservice.dto" />
     </key>
@@ -105,7 +121,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Docker.Docker">
+  <component name="RunManager" selected="Spring Boot.OrderServiceApplication">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -258,7 +274,7 @@
       <workItem from="1695268339160" duration="6863000" />
       <workItem from="1695306598590" duration="4952000" />
       <workItem from="1695531319350" duration="4905000" />
-      <workItem from="1695536823182" duration="5682000" />
+      <workItem from="1695536823182" duration="15502000" />
     </task>
     <task id="LOCAL-00001" summary="configuring java version">
       <created>1695230002891</created>
@@ -274,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695268421860</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="kubernetes configurations">
+      <created>1695651187880</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1695651187880</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,7 +318,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="configuring java version" />
     <MESSAGE value="docker files for all service-registry, cloudgateway and config-server" />
-    <option name="LAST_COMMIT_MESSAGE" value="docker files for all service-registry, cloudgateway and config-server" />
+    <MESSAGE value="kubernetes configurations" />
+    <option name="LAST_COMMIT_MESSAGE" value="kubernetes configurations" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

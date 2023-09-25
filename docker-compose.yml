@@ -21,11 +21,7 @@ services:
     environment:
       - EUREKA_SERVER_ADDRESS=http://serviceregistry:8761/eureka
 
-  mysqldb:
-    image: mysql:8
-    environment:
-      - MYSQL_ROOT_PASSWORD=12345
-      - MYSQL_DATABASE=paymentdb
+
 
 
   cloudgateway:
