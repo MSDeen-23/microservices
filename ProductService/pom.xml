@@ -14,7 +14,7 @@
     <name>Product service</name>
     <description>Demo project for Spring Boot</description>
     <properties>
-        <java.version>17</java.version>
+        <java.version>11</java.version>
         <spring-cloud.version>2021.0.6</spring-cloud.version>
     </properties>
     <dependencies>
@@ -116,6 +116,19 @@
                 <configuration>
                     <source>11</source>
                     <target>11</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <configuration>
+                    <from>
+                        <image>openjdk:11</image>
+                    </from>
+                    <to>
+                        <image>registry.hub.docker.com/sharukdeensa/productservice</image>
+                        <tags>${project.version}</tags>
+                    </to>
                 </configuration>
             </plugin>
         </plugins>

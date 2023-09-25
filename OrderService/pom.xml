@@ -110,7 +110,7 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-       7     </dependency>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -135,6 +135,19 @@
                     <source>11</source>
                     <target>11</target>
                 </configuration>
+            </plugin>
+            <plugin>
+            <groupId>com.google.cloud.tools</groupId>
+            <artifactId>jib-maven-plugin</artifactId>
+            <configuration>
+                <from>
+                    <image>openjdk:11</image>
+                </from>
+                <to>
+                    <image>registry.hub.docker.com/sharukdeensa/orderservice</image>
+                    <tags>${project.version}</tags>
+                </to>
+            </configuration>
             </plugin>
         </plugins>
     </build>
