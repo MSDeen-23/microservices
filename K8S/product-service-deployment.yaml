@@ -15,7 +15,12 @@ spec:
         - name: product-service-app
           image: sharukdeensa/productservice
           ports:
-            - containerPort: 8083
+            - name: http
+              containerPort: 8083
+              protocol: TCP
+            - name: debug-port
+              containerPort: 5005
+              protocol: TCP
           env:
             - name: CONFIG_SERVER_URL
               valueFrom:
@@ -27,6 +32,8 @@ spec:
                 configMapKeyRef:
                   key: hostname
                   name: mysql-cm
+            - name: JAVA_TOOL_OPTIONS
+              value: "-Xdebug -agentlib:jdwp=transport=dt_socket,address=0.0.0.0:5005,server=y,suspend=n"
 
 ---
 apiVersion: v1
