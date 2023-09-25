@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3afb861-2afb-4116-95aa-b9f7cff89b79" name="Default Changelist" comment="kubernetes configurations removing service registry and using the kubernetes way">
+    <list default="true" id="b3afb861-2afb-4116-95aa-b9f7cff89b79" name="Default Changelist" comment="adding debugger pointers for debuggging purposes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/K8S/order-service-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/K8S/order-service-deployment.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/K8S/product-service-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/K8S/product-service-deployment.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -262,7 +261,7 @@
       <workItem from="1695268339160" duration="6863000" />
       <workItem from="1695306598590" duration="4952000" />
       <workItem from="1695531319350" duration="4905000" />
-      <workItem from="1695536823182" duration="18128000" />
+      <workItem from="1695536823182" duration="18467000" />
     </task>
     <task id="LOCAL-00001" summary="configuring java version">
       <created>1695230002891</created>
@@ -299,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695663264374</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="adding debugger pointers for debuggging purposes">
+      <created>1695667118702</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1695667118702</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,9 +328,24 @@
     <MESSAGE value="docker files for all service-registry, cloudgateway and config-server" />
     <MESSAGE value="kubernetes configurations" />
     <MESSAGE value="kubernetes configurations removing service registry and using the kubernetes way" />
-    <option name="LAST_COMMIT_MESSAGE" value="kubernetes configurations removing service registry and using the kubernetes way" />
+    <MESSAGE value="adding debugger pointers for debuggging purposes" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding debugger pointers for debuggging purposes" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ProductService/src/main/java/com/sudo/productservice/controller/ProductController.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ProductService/src/main/java/com/sudo/productservice/controller/ProductController.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
         <watch expression="MockMvcResultMatchers.jsonPath(&quot;$&quot;).exists()" language="JAVA" />
