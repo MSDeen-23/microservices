@@ -1,0 +1,54 @@
+version: '3'
+services:
+  serviceregistry:
+    image: 'sharukdeensa/serviceregistry:0.0.1'
+    container_name: serviceregistry
+    ports:
+    - '8761:8761'
+
+  configserver:
+    image: 'sharukdeensa/configserver:0.0.1'
+    container_name: configserver
+    ports:
+    - '9296:9296'
+    depends_on:
+      - serviceregistry
+    healthcheck:
+      test: ["CMD","curl","-f","http://configserver:9296/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      - EUREKA_SERVER_ADDRESS=http://serviceregistry:8761/eureka
+
+
+
+
+  cloudgateway:
+    image: 'sharukdeensa/cloudgateway:latest'
+    container_name: cloudgateway
+    ports:
+    - '9090:9090'
+    environment:
+      - EUREKA_SERVER_ADDRESS=http://serviceregistry:8761/eureka
+      - CONFIG_SERVER_URL=configserver
+    depends_on:
+      configserver:
+        condition: service_healthy
+
+  paymentservice:
+    image: 'sharukdeensa/paymentservice:0.0.1'
+    container_name: paymentservice
+    ports:
+    - '8081:8081'
+    environment:
+      - EUREKA_SERVER_ADDRESS=http://serviceregistry:8761/eureka
+      - CONFIG_SERVER_URL=configserver
+      - DB_HOST=172.17.0.1
+    depends_on:
+      configserver:
+        condition: service_healthy
+
+
+
+

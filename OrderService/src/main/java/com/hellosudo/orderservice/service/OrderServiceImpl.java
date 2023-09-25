@@ -12,6 +12,7 @@ import com.hellosudo.orderservice.model.ProductResponse;
 import com.hellosudo.orderservice.repository.OrderRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -32,6 +33,12 @@ public class OrderServiceImpl implements OrderService{
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Value("${microservices.product}")
+    private String productServiceUrl;
+
+    @Value("${microservices.payment}")
+    private String paymentServiceUrl;
 
     @Override
     public long placeOrder(OrderRequest orderRequest) {
@@ -84,14 +91,14 @@ public class OrderServiceImpl implements OrderService{
         log.info("Invoking product service to fetch the product details from the product service : {} ",order.getProductId());
         ProductResponse productResponse =
                 restTemplate.getForObject(
-                        "http://PRODUCT-SERVICE/api/v1/product/"+order.getProductId(),
+                        productServiceUrl+order.getProductId(),
                         ProductResponse.class
                 );
 
         log.info("Getting payment information from payment service for order id : {} ", orderId);
         PaymentResponse paymentResponse
                 = restTemplate.getForObject(
-                        "http://PAYMENT-SERVICE/api/v1/payment/order/"+order.getId(),
+                        paymentServiceUrl+"order/"+order.getId(),
                 PaymentResponse.class);
         OrderResponse.PaymentDetails paymentDetails
                 = OrderResponse.PaymentDetails

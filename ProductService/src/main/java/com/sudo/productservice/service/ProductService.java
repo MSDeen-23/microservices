@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -18,20 +20,29 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-    public void createProduct(ProductRequest productRequest){
+    public long createProduct(ProductRequest productRequest){
         Product product = Product.builder()
                 .name(productRequest.getName())
                 .description(productRequest.getDescription())
                 .price(productRequest.getPrice())
                 .build();
-        productRepository.save(product);
+        Product savedProduct = productRepository.save(product);
         log.info("Product {} is saved ",product.getId());
+        return savedProduct.getId();
 
+    }
+
+    public ProductResponse getProductById(Long id){
+        Optional<Product> product = productRepository.findById(id);
+        if(product.isPresent()) {
+            return mapToProductResponse(product.get());
+        }
+        return null;
     }
 
     public List<ProductResponse> getAllProducts() {
         List<Product> products = productRepository.findAll();
-        return products.stream().map(this::mapToProductResponse).toList();
+        return products.stream().map(this::mapToProductResponse).collect(Collectors.toList());
     }
 
     private ProductResponse mapToProductResponse(Product product){
